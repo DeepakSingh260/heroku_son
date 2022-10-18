@@ -5,6 +5,7 @@ try:
 except:
     print("no module name selenoum")
 
+
 import asyncio
 from selenium.webdriver.common.keys import Keys 
 from selenium.webdriver.firefox.options import Options
@@ -43,7 +44,7 @@ def mining(Query):
                 link.append([i.find_element(By.TAG_NAME ,"a").get_attribute("href"),i.find_element(By.CLASS_NAME ,"NewProductCardstyled__StyledDesktopProductTitle-sc-6y2tys-5").text,i.find_element(By.CLASS_NAME ,"BBZyK").text])
         except:
             pass  
-    [print("meesho.in" , lk[1], lk[2]) for lk in link ]
+   
     return link
 
 
