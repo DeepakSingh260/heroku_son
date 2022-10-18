@@ -1,0 +1,1 @@
+web: gunicorn mining-for-whatisapp:app
