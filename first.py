@@ -16,7 +16,7 @@ from selenium import webdriver
 options = Options()
 # options.binary_location  = r"C:\Program Files\Mozilla Firefox\firefox.exe"
 
-GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google_chrome'
+GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google-chrome'
 CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument("--headless")
