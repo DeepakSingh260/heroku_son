@@ -12,7 +12,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 
 options = Options()
-options.binary_location  = r"C:\Program Files\Mozilla Firefox\firefox.exe"
+# options.binary_location  = r"C:\Program Files\Mozilla Firefox\firefox.exe"
 options.headless = True
 
 app = Flask(__name__)
