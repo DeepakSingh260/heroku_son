@@ -19,6 +19,8 @@ options = Options()
 GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google_chrome'
 CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
 chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument("--headless")
+chrome_options.binary_location =GOOGLE_CHROME_PATH
 chrome_options.add_argument('--disable-gpu')
 chrome_options.add_argument('--no-sandbox')
 
@@ -33,19 +35,23 @@ def mining(Query):
    
     driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
     driver.get("https://www.meesho.com/search?q="+str(Query))
-    el = WebDriverWait(driver,timeout=10).until(lambda d: d.find_elements(By.CLASS_NAME,"sc-dkPtyc"))
-    link = []
-    for i in el:
-        try:
-            # print("var",i.find_element(By.CLASS_NAME ,"a-link-normal").get_attribute("href"))
-            if i.find_element(By.CLASS_NAME ,"BBZyK").text == '':
-                pass
-            else:
-                link.append([i.find_element(By.TAG_NAME ,"a").get_attribute("href"),i.find_element(By.CLASS_NAME ,"NewProductCardstyled__StyledDesktopProductTitle-sc-6y2tys-5").text,i.find_element(By.CLASS_NAME ,"BBZyK").text])
-        except:
-            pass  
-   
-    return link
+
+    try:
+        el = WebDriverWait(driver,timeout=10).until(lambda d: d.find_elements(By.CLASS_NAME,"sc-dkPtyc"))
+        link = []
+        for i in el:
+            try:
+                # print("var",i.find_element(By.CLASS_NAME ,"a-link-normal").get_attribute("href"))
+                if i.find_element(By.CLASS_NAME ,"BBZyK").text == '':
+                    pass
+                else:
+                    link.append([i.find_element(By.TAG_NAME ,"a").get_attribute("href"),i.find_element(By.CLASS_NAME ,"NewProductCardstyled__StyledDesktopProductTitle-sc-6y2tys-5").text,i.find_element(By.CLASS_NAME ,"BBZyK").text])
+            except:
+                pass  
+    
+        return link
+    except:
+        return "request failed"
 
 
 
