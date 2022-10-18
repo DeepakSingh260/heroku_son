@@ -10,10 +10,16 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium import webdriver
 
 options = Options()
 # options.binary_location  = r"C:\Program Files\Mozilla Firefox\firefox.exe"
-options.headless = True
+
+GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google_chrome'
+CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--disable-gpu')
+chrome_options.add_argument('--no-sandbox')
 
 app = Flask(__name__)
 
@@ -24,7 +30,7 @@ def func():
 def mining(Query):
     
    
-    driver = webdriver.Firefox(options=options)
+    driver = webdriver.Chrome(execution_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
     driver.get("https://www.meesho.com/search?q="+str(Query))
     el = WebDriverWait(driver,timeout=10).until(lambda d: d.find_elements(By.CLASS_NAME,"sc-dkPtyc"))
     link = []
