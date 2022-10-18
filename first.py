@@ -37,7 +37,7 @@ def mining(Query):
     driver.get("https://www.meesho.com/search?q="+str(Query))
 
 
-    el = WebDriverWait(driver,timeout=100).until(lambda d: d.find_elements(By.CLASS_NAME,"sc-dkPtyc"))
+    el = WebDriverWait(driver,timeout=15).until(lambda d: d.find_elements(By.CLASS_NAME,"sc-dkPtyc"))
     link = []
     for i in el:
         try:
