@@ -1,0 +1,22 @@
+1666110870293	geckodriver	INFO	Listening on 127.0.0.1:50598
+1666110873352	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "--remote-debugging-port" "50599" "-no-remote" "-profile" "C:\\Users\\alexm\\AppData\\Local\\Temp\\rust_mozprofileim7VJb"
+*** You are running in headless mode.
+1666110873695	Marionette	INFO	Marionette enabled
+1666110873699	Marionette	INFO	Listening on port 50604
+WebDriver BiDi listening on ws://127.0.0.1:50599
+1666110873905	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\alexm\\AppData\\Local\\Temp\\rust_mozprofileim7VJb\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:50599/devtools/browser/cb50f0f8-723e-47dd-8087-31c711848f89
+JavaScript error: https://www.meesho.com/_next/static/chunks/f8b6e8dc2de5bd7cdbb6307f5365284134cd3fc6.678bdad11c71727d974f.js, line 1: TypeError: l is undefined
+1666110901843	geckodriver	INFO	Listening on 127.0.0.1:50697
+1666110904903	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "--remote-debugging-port" "50698" "-no-remote" "-profile" "C:\\Users\\alexm\\AppData\\Local\\Temp\\rust_mozprofileioXpyU"
+*** You are running in headless mode.
+1666110905193	Marionette	INFO	Marionette enabled
+1666110905196	Marionette	INFO	Listening on port 50703
+WebDriver BiDi listening on ws://127.0.0.1:50698
+1666110905525	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\alexm\\AppData\\Local\\Temp\\rust_mozprofileioXpyU\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:50698/devtools/browser/66c44668-b7c6-476d-a602-3abd29c5e028
+JavaScript error: https://www.meesho.com/_next/static/chunks/f8b6e8dc2de5bd7cdbb6307f5365284134cd3fc6.678bdad11c71727d974f.js, line 1: TypeError: l is undefined
