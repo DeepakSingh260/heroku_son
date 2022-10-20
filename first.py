@@ -39,7 +39,7 @@ def mining(Query):
 
     loop= asyncio.get_event_loop()
     obj = loop.create_task(query(str))
-    loop.run_until_complete(obj)
+    return loop.run_until_complete(obj)
 
 
 async def query(str):
