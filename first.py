@@ -25,7 +25,7 @@ chrome_options.add_argument('--disable-gpu')
 chrome_options.add_argument('--no-sandbox')
 
 app = Flask(__name__)
-driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
+
 
 @app.route('/')
 def func():
@@ -43,6 +43,7 @@ def mining(Query):
 
 
 async def query(string):
+    driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
     WebDriverWait(driver,timeout=25).until(driver.get("https://www.meesho.com/search?q="+str(string)))
     el = driver.find_elements(By.CLASS_NAME,"sc-dkPtyc")
     link = []
