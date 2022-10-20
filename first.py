@@ -43,7 +43,7 @@ def mining(Query):
 
 
 async def query(string):
-    await driver.get("https://www.meesho.com/search?q="+str(string))
+    WebDriverWait(driver,timeout=25).until(driver.get("https://www.meesho.com/search?q="+str(string)))
     el = driver.find_elements(By.CLASS_NAME,"sc-dkPtyc")
     link = []
     for i in el:
@@ -57,9 +57,6 @@ async def query(string):
             pass  
 
     return link
-
-
-
 
 if __name__ == "__main__":
     app.debug = True 
