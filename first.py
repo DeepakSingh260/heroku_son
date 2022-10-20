@@ -35,14 +35,15 @@ def mining(Query):
     
    
     
-    driver.get("https://www.meesho.com/search?q="+str(Query))
+    
 
     loop= asyncio.get_event_loop()
     obj = loop.create_task(query(str))
     return loop.run_until_complete(obj)
 
 
-async def query(str):
+async def query(string):
+    await driver.get("https://www.meesho.com/search?q="+str(string))
     el = driver.find_elements(By.CLASS_NAME,"sc-dkPtyc")
     link = []
     for i in el:
