@@ -34,10 +34,10 @@ def mining(Query):
     
    
     driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
-    driver.get("https://www.amazon.com/search?q="+str(Query))
+    driver.get("https://www.meesho.com/search?q="+str(Query))
 
 
-    el = WebDriverWait(driver,timeout=15).until(lambda d: d.find_elements(By.CLASS_NAME,"sc-dkPtyc"))
+    el = driver.find_elements(By.CLASS_NAME,"sc-dkPtyc")
     link = []
     for i in el:
         try:
