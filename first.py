@@ -46,6 +46,7 @@ def mining(Query):
 async def query(string):
     driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
     driver.get("https://www.meesho.com/search?q="+str(string))
+    driver.implicitly_wait(20) 
     el = driver.find_elements(By.CLASS_NAME,"sc-dkPtyc")
     link = []
     for i in el:
