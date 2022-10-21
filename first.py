@@ -53,6 +53,7 @@ def miningbs4(Query):
     py_con = requests.get(py_url)
     py_soup = BeautifulSoup (py_con.text, 'html.parser')
     print(py_soup.select ('title'))
+    return py_soup.select ('title')
 
 
 
