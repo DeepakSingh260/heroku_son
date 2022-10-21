@@ -13,6 +13,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium import webdriver
 
+from bs4 import BeautifulSoup
+import requests
+
 options = Options()
 # options.binary_location  = r"C:\Program Files\Mozilla Firefox\firefox.exe"
 
@@ -41,6 +44,16 @@ def mining(Query):
     loop= asyncio.get_event_loop()
     obj = loop.create_task(query(str))
     return loop.run_until_complete(obj)
+
+
+@app.route('/Query/<Query>')
+def miningbs4(Query):
+    
+    py_url = "https://www.meesho.com/search?q="+str(Query)
+    py_con = requests.get(py_url)
+    py_soup = BeautifulSoup (py_con.text, 'html.parser')
+    print(py_soup.select ('title'))
+
 
 
 async def query(string):
