@@ -4,7 +4,7 @@ try:
     from selenium import webdriver 
 except:
     print("no module name selenoum")
-
+import time
 
 import asyncio
 from selenium.webdriver.common.keys import Keys 
@@ -51,6 +51,7 @@ def miningbs4(Query):
     
     py_url = "https://www.meesho.com/search?q="+str(Query)
     py_con = requests.get(py_url)
+    time.sleep(10)
     py_soup = BeautifulSoup (py_con.text, 'html.parser')
     print(py_soup.select ('title'))
     return str(py_soup.select ('title'))
