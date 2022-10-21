@@ -47,7 +47,7 @@ async def query(string):
     driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
     driver.implicitly_wait(10)
     driver.get("https://www.meesho.com/search?q="+str(string))
-    driver.implicitly_wait(10) 
+   
     el = driver.find_elements(By.CLASS_NAME,"sc-dkPtyc")
     link = []
     for i in el:
@@ -58,8 +58,8 @@ async def query(string):
             else:
                 link.append([i.find_element(By.TAG_NAME ,"a").get_attribute("href"),i.find_element(By.CLASS_NAME ,"NewProductCardstyled__StyledDesktopProductTitle-sc-6y2tys-5").text,i.find_element(By.CLASS_NAME ,"BBZyK").text])
         except:
-            pass  
-
+            print("exception hits")
+        print(link)
     return link
 
 if __name__ == "__main__":
