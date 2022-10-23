@@ -1,6 +1,4 @@
 
-
-from matplotlib.widgets import EllipseSelector
 from flask import Flask ,redirect , url_for ,request 
 try:
     from selenium import webdriver 
