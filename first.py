@@ -43,7 +43,10 @@ def func():
         return sub
     else:
         return "python project"
-
+@app.route('/' )
+def init():
+    
+    return "Welcome to What-is-app bot"
 
 @app.route('/Question/<Query>')
 def miningbs4(Query):
