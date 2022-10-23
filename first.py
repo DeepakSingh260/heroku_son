@@ -19,7 +19,7 @@ import requests
 options = Options()
 # options.binary_location  = r"C:\Program Files\Mozilla Firefox\firefox.exe"
 
-secret_token = "EAALE1CNsKmUBAFTVO2pbd2m8m9GKakJTW6UZACknrDWoZCghIF4Ew6fJdsDCEX96ReQz7AIIof1Shh2yHbiO9UIFVYzZCZC61HqQ44zaaAcjNxB43U4CFCyZAYG06lZCX27bdpfV7YrNT89UwbQLUaeMMcOVYljvaEZAYqUqkUV6jhOZCnnauLUZBvnu4WblQo4jmALDyT58SKAZDZD"
+secret_token = 'EAALE1CNsKmUBAFTVO2pbd2m8m9GKakJTW6UZACknrDWoZCghIF4Ew6fJdsDCEX96ReQz7AIIof1Shh2yHbiO9UIFVYzZCZC61HqQ44zaaAcjNxB43U4CFCyZAYG06lZCX27bdpfV7YrNT89UwbQLUaeMMcOVYljvaEZAYqUqkUV6jhOZCnnauLUZBvnu4WblQo4jmALDyT58SKAZDZD'
 
 GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google-chrome'
 CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
@@ -35,14 +35,18 @@ app = Flask(__name__)
 
 @app.route('/message' , methods=["GET"])
 def func():
-    if request.args.get("hub.verify_token") != secret_token :
+    print("hub token",request.args.get("hub.verify_token") , "mode" , request.args.get("hub.mode") )
+    sent_token = str(request.args.get("hub.verify_token")).split(" ")[0]
+    print(sent_token , "/n" , secret_token)
+    if sent_token != secret_token :
         return app.make_response(("forbidden token",403))
+    
     if request.args.get("hub.mode") != "subscribe" :
         return app.make_response(("forbidden mode",403))
     sub = request.args.get('entry')
 
     res = request.args.get("hub.challenge")
-    return app.make_response((res) , 200)
+    return app.make_response((res , 200))
     # if sub:
     #     return app.make_response((sub , 200))
     # else:
