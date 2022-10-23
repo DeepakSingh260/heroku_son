@@ -39,9 +39,9 @@ def func():
         return app.make_response(("forbidden",403))
     sub = request.args.get('entry')
     if sub:
-        return sub
+        return app.make_response((sub , 200))
     else:
-        return "python project"
+        return app.make_response(("python project",200))
 @app.route('/' )
 def init():
     
