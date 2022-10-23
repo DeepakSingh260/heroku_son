@@ -71,11 +71,12 @@ def miningbs4(Query):
         price = cell.find('span', attrs={'class': 'aZK3gc Lhpu7d'})
         link = cell.find('a', attrs={'class':'loT5Qd kneS6c'})
         # print(price.text)
-        if txt:
+        if txt and price.text and link['href']:
             lt.append((locale.atof(price.text[1:]),txt["title"],link['href']))
-
-    return sorted(lt)
-
+    if lt:
+        return sorted(lt)
+    else:
+        return "no result found"
 
 
 
