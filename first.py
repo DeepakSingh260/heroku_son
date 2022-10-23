@@ -35,7 +35,8 @@ app = Flask(__name__)
 
 @app.route('/message' , methods=["GET"])
 def func():
-    
+    if request.args.get("hub.verify_token") != secret_token:
+        return app.make_response(("forbidden",403))
     sub = request.args.get('entry')
     if sub:
         return sub
