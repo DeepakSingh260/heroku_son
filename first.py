@@ -34,48 +34,26 @@ app = Flask(__name__)
 @app.route('/')
 def func():
     return "python project"
-@app.route('/<Query>')
-def mining(Query):
-    
-   
-    
-    
-
-    loop= asyncio.get_event_loop()
-    obj = loop.create_task(query(str))
-    return loop.run_until_complete(obj)
 
 
-@app.route('/Query/<Query>')
+@app.route('/Question/<Query>')
 def miningbs4(Query):
     
-    py_url = "https://www.meesho.com/search?q="+str(Query)
+    py_url = "https://shopping.google.com/search?q="+str(Query)
     py_con = requests.get(py_url)
-    time.sleep(10)
+    
     py_soup = BeautifulSoup (py_con.text, 'html.parser')
-    print(py_soup.select ('title'))
-    return str(py_soup.select ('title'))
+    lt=[]
+    for cell in py_soup.find_all('td' , attrs={'class':'KEJLN'}):
+      
+        txt = cell.find('h2' , attrs={'class': 'MPhl6c'})
+        if txt:
+            lt.append(txt["title"])
+
+    return lt   
 
 
 
-async def query(string):
-    driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
-    driver.implicitly_wait(10)
-    driver.get("https://www.meesho.com/search?q="+str(string))
-   
-    el = driver.find_elements(By.CLASS_NAME,"sc-dkPtyc")
-    link = []
-    for i in el:
-        try:
-            # print("var",i.find_element(By.CLASS_NAME ,"a-link-normal").get_attribute("href"))
-            if i.find_element(By.CLASS_NAME ,"BBZyK").text == '':
-                pass
-            else:
-                link.append([i.find_element(By.TAG_NAME ,"a").get_attribute("href"),i.find_element(By.CLASS_NAME ,"NewProductCardstyled__StyledDesktopProductTitle-sc-6y2tys-5").text,i.find_element(By.CLASS_NAME ,"BBZyK").text])
-        except:
-            print("exception hits")
-        print(link)
-    return link
 
 if __name__ == "__main__":
     app.debug = True 
