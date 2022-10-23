@@ -6,7 +6,7 @@ except:
     print("no module name selenoum")
 import time
 import locale
-
+import os
 import asyncio
 from selenium.webdriver.common.keys import Keys 
 from selenium.webdriver.firefox.options import Options
@@ -20,7 +20,7 @@ import requests
 options = Options()
 # options.binary_location  = r"C:\Program Files\Mozilla Firefox\firefox.exe"
 
-secret_token = 'EAALE1CNsKmUBAFTVO2pbd2m8m9GKakJTW6UZACknrDWoZCghIF4Ew6fJdsDCEX96ReQz7AIIof1Shh2yHbiO9UIFVYzZCZC61HqQ44zaaAcjNxB43U4CFCyZAYG06lZCX27bdpfV7YrNT89UwbQLUaeMMcOVYljvaEZAYqUqkUV6jhOZCnnauLUZBvnu4WblQo4jmALDyT58SKAZDZD'
+secret_token = os.environ.get('secret_token')
 
 GOOGLE_CHROME_PATH = '/bin/google-chrome-stable'
 CHROMEDRIVER_PATH = '/bin/chromedriver'
