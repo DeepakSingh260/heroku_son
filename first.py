@@ -19,7 +19,7 @@ import requests
 options = Options()
 # options.binary_location  = r"C:\Program Files\Mozilla Firefox\firefox.exe"
 
-secret_token = "wekf3ru93bdk2cmk2"
+secret_token = "EAALE1CNsKmUBAFTVO2pbd2m8m9GKakJTW6UZACknrDWoZCghIF4Ew6fJdsDCEX96ReQz7AIIof1Shh2yHbiO9UIFVYzZCZC61HqQ44zaaAcjNxB43U4CFCyZAYG06lZCX27bdpfV7YrNT89UwbQLUaeMMcOVYljvaEZAYqUqkUV6jhOZCnnauLUZBvnu4WblQo4jmALDyT58SKAZDZD"
 
 GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google-chrome'
 CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
