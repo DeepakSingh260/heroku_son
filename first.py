@@ -38,10 +38,13 @@ def func():
     if request.args.get("hub.verify_token") != secret_token or request.args.get("hub.model") == "subscribe" :
         return app.make_response(("forbidden",403))
     sub = request.args.get('entry')
-    if sub:
-        return app.make_response((sub , 200))
-    else:
-        return app.make_response(("python project",200))
+
+    res = request.args.get("hub.challenge")
+    return app.make_response((res) , 200)
+    # if sub:
+    #     return app.make_response((sub , 200))
+    # else:
+    #     return app.make_response(("python project",200))
 @app.route('/' )
 def init():
     
