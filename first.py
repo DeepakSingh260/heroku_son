@@ -1,4 +1,6 @@
 
+
+from matplotlib.widgets import EllipseSelector
 from flask import Flask ,redirect , url_for ,request 
 try:
     from selenium import webdriver 
@@ -19,6 +21,8 @@ import requests
 options = Options()
 # options.binary_location  = r"C:\Program Files\Mozilla Firefox\firefox.exe"
 
+secret_token = "wekf3ru93bdk2cmk2"
+
 GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google-chrome'
 CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
 chrome_options = webdriver.ChromeOptions()
@@ -31,9 +35,14 @@ options.add_argument("window-size=1400,800")
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/message' , methods=["GET"])
 def func():
-    return "python project"
+    
+    sub = request.args.get('entry')
+    if sub:
+        return sub
+    else:
+        return "python project"
 
 
 @app.route('/Question/<Query>')
