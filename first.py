@@ -34,24 +34,24 @@ options.add_argument("window-size=1400,800")
 locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
 app = Flask(__name__)
 
-@app.route('/message' , methods=["GET"])
+@app.route('/message' , methods=["GET" , "POST"])
 def func():
-    print("hub token",request.args.get("hub.verify_token") , "mode" , request.args.get("hub.mode") )
-    sent_token = str(request.args.get("hub.verify_token")).split(" ")[0]
-    print(sent_token , "/n" , secret_token)
-    if sent_token != secret_token :
-        return app.make_response(("forbidden token",403))
-    
-    if request.args.get("hub.mode") != "subscribe" :
-        return app.make_response(("forbidden mode",403))
-    sub = request.args.get('entry')
+    if request.method == 'POST':
+        
+        return app.make_response((request.args.get("entry"),200))
+    else:
+        print("hub token",request.args.get("hub.verify_token") , "mode" , request.args.get("hub.mode") )
+        sent_token = str(request.args.get("hub.verify_token")).split(" ")[0]
+        print(sent_token , "/n" , secret_token)
+        if sent_token != secret_token :
+            return app.make_response(("forbidden token",403))
+        
+        if request.args.get("hub.mode") != "subscribe" :
+            return app.make_response(("forbidden mode",403))
 
-    res = request.args.get("hub.challenge")
-    return app.make_response((res , 200))
-    # if sub:
-    #     return app.make_response((sub , 200))
-    # else:
-    #     return app.make_response(("python project",200))
+        res = request.args.get("hub.challenge")
+        return app.make_response((res , 200))
+
 @app.route('/' )
 def init():
     
