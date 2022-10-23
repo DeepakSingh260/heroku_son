@@ -37,7 +37,7 @@ app = Flask(__name__)
 @app.route('/message' , methods=["GET" , "POST"])
 def func():
     if request.method == 'POST':
-        
+        print(request)
         return app.make_response(("res",200))
     else:
         print("hub token",request.args.get("hub.verify_token") , "mode" , request.args.get("hub.mode") )
