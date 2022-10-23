@@ -35,8 +35,10 @@ app = Flask(__name__)
 
 @app.route('/message' , methods=["GET"])
 def func():
-    if request.args.get("hub.verify_token") != secret_token or request.args.get("hub.model") != "subscribe" :
-        return app.make_response(("forbidden",403))
+    if request.args.get("hub.verify_token") != secret_token :
+        return app.make_response(("forbidden token",403))
+    if request.args.get("hub.mode") != "subscribe" :
+        return app.make_response(("forbidden mode",403))
     sub = request.args.get('entry')
 
     res = request.args.get("hub.challenge")
