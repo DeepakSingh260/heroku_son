@@ -8,6 +8,7 @@ import time
 import locale
 import os
 import asyncio
+import logging
 
 from selenium.webdriver.common.keys import Keys 
 from selenium.webdriver.firefox.options import Options
@@ -38,11 +39,12 @@ app = Flask(__name__)
 @app.route('/message' , methods=["GET" , "POST"])
 def func():
     if request.method == 'POST':
-        print(request)
+        print("message ")
         for arg in request.args:
             print(arg)
             print(request[arg])
-
+            logging.log(1 , arg )
+            logging.log(1 , request.args.get("id") )
         base_url = 'https://graph.facebook.com/v14.0/101564042742370/messages'
         headers = {'Content-type': 'application/json'  , 'Authorization':'Bearer '+str(os.environ.get("secret_token"))}
         # data = {"chatID" : chatID,
