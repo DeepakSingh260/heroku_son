@@ -54,7 +54,7 @@ def func():
         data = {"chatID" : chat_id,
                 "body" : "text"}  
         answer = requests.post(base_url, data=json.dumps(data), headers=headers)
-        return answer
+        return answer.json
     else:
         print("hub token",request.args.get("hub.verify_token") , "mode" , request.args.get("hub.mode") )
         sent_token = str(request.args.get("hub.verify_token")).split(" ")[0]
