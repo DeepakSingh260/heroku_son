@@ -8,7 +8,7 @@ import time
 import locale
 import os
 import asyncio
-import pywhatkit
+
 from selenium.webdriver.common.keys import Keys 
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By
