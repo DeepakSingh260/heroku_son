@@ -8,6 +8,7 @@ import time
 import locale
 import os
 import asyncio
+import pywhatkit
 from selenium.webdriver.common.keys import Keys 
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By
@@ -38,6 +39,13 @@ app = Flask(__name__)
 def func():
     if request.method == 'POST':
         print(request)
+        for args in request.args:
+            print(args, request[args])
+
+        base_url = 'https://graph.facebook.com/v14.0/101564042742370/messages'
+        headers = {'Content-type': 'application/json'  , 'Authorization':'Bearer '+str(os.environ.get("secret_token"))}
+        # data = {"chatID" : chatID,
+        #         "body" : text}  
         return app.make_response(("res",200))
     else:
         print("hub token",request.args.get("hub.verify_token") , "mode" , request.args.get("hub.mode") )
