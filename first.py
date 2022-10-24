@@ -42,13 +42,15 @@ def func():
     if request.method == 'POST':
         print("message ")
         char = request.json
+        for c in char:
+            print(c)
 
            
         base_url = 'https://graph.facebook.com/v14.0/101564042742370/messages'
         headers = {'Content-type': 'application/json'  , 'Authorization':'Bearer '+str(os.environ.get("secret_token"))}
         # data = {"chatID" : chatID,
         #         "body" : text}  
-        return app.make_response((char["messages"],200))
+        return app.make_response((char,200))
     else:
         print("hub token",request.args.get("hub.verify_token") , "mode" , request.args.get("hub.mode") )
         sent_token = str(request.args.get("hub.verify_token")).split(" ")[0]
