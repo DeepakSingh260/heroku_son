@@ -53,8 +53,8 @@ def func():
         headers = {'Content-type': 'application/json'  , 'Authorization':'Bearer '+str(os.environ.get("secret_token"))}
         data = {"chatID" : chat_id,
                 "body" : "text"}  
-        requests.post(base_url, data=json.dumps(data), headers=headers)
-        return app.make_response((char["entry"],200))
+        answer = requests.post(base_url, data=json.dumps(data), headers=headers)
+        return answer
     else:
         print("hub token",request.args.get("hub.verify_token") , "mode" , request.args.get("hub.mode") )
         sent_token = str(request.args.get("hub.verify_token")).split(" ")[0]
