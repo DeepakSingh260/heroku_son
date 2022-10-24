@@ -59,7 +59,7 @@ def func():
             return app.make_response(("forbidden mode",403))
 
         res = request.args.get("hub.challenge")
-        return app.make_response((res , 200))
+        return app.make_response((str(res) , 200))
 
 @app.route('/' )
 def init():
