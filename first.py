@@ -10,6 +10,8 @@ import locale
 import os
 import asyncio
 import logging
+import json
+import requests
 
 from selenium.webdriver.common.keys import Keys 
 from selenium.webdriver.firefox.options import Options
@@ -44,13 +46,14 @@ def func():
         char = request.json
         for c in char:
             print(c)
-        print(char["entry"][0]["id"])
+        chat_id = char["entry"][0]["id"]
 
            
         base_url = 'https://graph.facebook.com/v14.0/101564042742370/messages'
         headers = {'Content-type': 'application/json'  , 'Authorization':'Bearer '+str(os.environ.get("secret_token"))}
-        # data = {"chatID" : chatID,
-        #         "body" : text}  
+        data = {"chatID" : chat_id,
+                "body" : "text"}  
+        requests.post(base_url, data=json.dumps(data), headers=headers)
         return app.make_response((char["entry"],200))
     else:
         print("hub token",request.args.get("hub.verify_token") , "mode" , request.args.get("hub.mode") )
