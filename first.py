@@ -39,8 +39,8 @@ app = Flask(__name__)
 def func():
     if request.method == 'POST':
         print(request)
-        for args in request.args:
-            print(args, request[args])
+        for arg in request.args:
+            print(arg)
 
         base_url = 'https://graph.facebook.com/v14.0/101564042742370/messages'
         headers = {'Content-type': 'application/json'  , 'Authorization':'Bearer '+str(os.environ.get("secret_token"))}
