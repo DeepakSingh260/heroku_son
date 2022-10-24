@@ -41,16 +41,14 @@ app = Flask(__name__)
 def func():
     if request.method == 'POST':
         print("message ")
-        for arg in request.args:
-            print(arg)
-            print(request[arg])
-            logging.log(1 , arg )
-            logging.log(1 , request.args.get("entry") )
+        char = request.json
+
+           
         base_url = 'https://graph.facebook.com/v14.0/101564042742370/messages'
         headers = {'Content-type': 'application/json'  , 'Authorization':'Bearer '+str(os.environ.get("secret_token"))}
         # data = {"chatID" : chatID,
         #         "body" : text}  
-        return app.make_response((request.json,200))
+        return app.make_response((char["messages"],200))
     else:
         print("hub token",request.args.get("hub.verify_token") , "mode" , request.args.get("hub.mode") )
         sent_token = str(request.args.get("hub.verify_token")).split(" ")[0]
