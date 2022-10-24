@@ -44,7 +44,7 @@ def func():
         char = request.json
         for c in char:
             print(c)
-        print(char["entry"])
+        print(char["entry"][0]["id"])
 
            
         base_url = 'https://graph.facebook.com/v14.0/101564042742370/messages'
