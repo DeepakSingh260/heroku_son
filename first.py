@@ -49,7 +49,7 @@ def func():
             print(c)
         char = request.json
         print( char["entry"][0]["changes"][0]["value"])
-        phone = char["entry"][0]["changes"][0]["value"]["metadata"]["phone_number_id"]
+        phone = char["entry"][0]["changes"][0]["value"]["messages"][0]["from"]
         message = char["entry"][0]["changes"][0]["value"]["messages"][0]["text"]["body"]
 
         print("phone" , phone , "message",message)
