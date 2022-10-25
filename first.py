@@ -63,8 +63,8 @@ def func():
             }      
             }
         
-        answer = requests.post(base_url, data=json.dumps(data), headers=headers)
-        print(answer.json())
+        # answer = requests.post(base_url, data=json.dumps(data), headers=headers)
+        # print(answer.json())
         return  app.make_response(("res", 200))
     else:
         print("hub token",request.args.get("hub.verify_token") , "mode" , request.args.get("hub.mode") )
