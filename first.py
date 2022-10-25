@@ -50,7 +50,9 @@ def func():
 
            
         base_url = 'https://graph.facebook.com/v14.0/101564042742370/messages'
-        headers = {'Content-type': 'application/json'  , 'Authorization':'Bearer '+str(os.environ.get("secret_token"))}
+        method = "sendMessage"
+        url = f"{base_url}{method}?token={secret_token}"
+        headers = {'Content-type': 'application/json' }
         data = {"chatID" : chat_id,
                 "body" : "text"}  
         answer = requests.post(base_url, data=json.dumps(data), headers=headers)
