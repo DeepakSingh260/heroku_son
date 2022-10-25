@@ -55,7 +55,7 @@ def func():
         print("phone" , phone , "message",message)
         base_url = 'https://graph.facebook.com/v14.0/101564042742370/messages'
         method = "sendMessage"
-        headers = {'Content-type': 'application/json','Authorization': 'Bearer EAALE1CNsKmUBAJOD4HgoU1dipBRAm9xx14tcZBOxuwhgbT7i610cZCRZBt7497rTYQSJw2gYu4KOrZC3qHWpYT7W5pqYiUqskojTrmBwceLjP2gI6H1P0LfDUYWHRfpGV6qKipniZARhj0lF7Dkq1tgQnkCEgXdtvr2fVb1Cm9ZC8MmZATstIlbbe32WfsDCMpxzlShrYEwIgZDZD'  }
+        headers = {'Content-type': 'application/json','Authorization': 'Bearer '+str(secret_token)  }
         lt = get_lt(message)
         ans = ""
         for row in lt:
