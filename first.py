@@ -47,9 +47,12 @@ def func():
         char = request.json
         for c in char:
             print(c)
-        chat_id = char["entry"][0]["id"]
+        char = request.json
+        print( char["entry"][0]["changes"][0]["value"])
+        phone = char["entry"][0]["changes"][0]["value"]["metadata"]["phone_number_id"]
+        message = char["entry"][0]["changes"][0]["value"]["messages"][0]["text"]["body"]
 
-           
+        print("phone" , phone , "message",message)
         base_url = 'https://graph.facebook.com/v14.0/101564042742370/messages'
         method = "sendMessage"
         headers = {'Content-type': 'application/json','Authorization': 'Bearer EAALE1CNsKmUBAJOD4HgoU1dipBRAm9xx14tcZBOxuwhgbT7i610cZCRZBt7497rTYQSJw2gYu4KOrZC3qHWpYT7W5pqYiUqskojTrmBwceLjP2gI6H1P0LfDUYWHRfpGV6qKipniZARhj0lF7Dkq1tgQnkCEgXdtvr2fVb1Cm9ZC8MmZATstIlbbe32WfsDCMpxzlShrYEwIgZDZD'  }
