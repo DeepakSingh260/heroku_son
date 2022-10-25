@@ -71,7 +71,7 @@ def func():
             "type": "text",
             "text": {
                 "preview_url": False,
-                "body": ans
+                "body": ans[:4095]
             }      
             }
 
