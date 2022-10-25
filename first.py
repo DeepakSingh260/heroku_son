@@ -56,18 +56,30 @@ def func():
         base_url = 'https://graph.facebook.com/v14.0/101564042742370/messages'
         method = "sendMessage"
         headers = {'Content-type': 'application/json','Authorization': 'Bearer EAALE1CNsKmUBAJOD4HgoU1dipBRAm9xx14tcZBOxuwhgbT7i610cZCRZBt7497rTYQSJw2gYu4KOrZC3qHWpYT7W5pqYiUqskojTrmBwceLjP2gI6H1P0LfDUYWHRfpGV6qKipniZARhj0lF7Dkq1tgQnkCEgXdtvr2fVb1Cm9ZC8MmZATstIlbbe32WfsDCMpxzlShrYEwIgZDZD'  }
+        lt = get_lt(message)
+        ans = ""
+        for row in lt:
+            st = ""
+            for cell in row:
+                st+=str(cell)
+                st+=" "
+            st+="\n"
+            ans+=st
         data = {
             "messaging_product": "whatsapp",
             "to": "919682342287",
             "type": "text",
             "text": {
                 "preview_url": False,
-                "body": "text-message-content"
+                "body": ans
             }      
             }
-        
-        # answer = requests.post(base_url, data=json.dumps(data), headers=headers)
-        # print(answer.json())
+
+        bot_no = "15550476952"
+        if bot_no!=phone:
+            
+            answer = requests.post(base_url, data=json.dumps(data), headers=headers)
+            print(answer.json())
         return  app.make_response(("res", 200))
     else:
         print("hub token",request.args.get("hub.verify_token") , "mode" , request.args.get("hub.mode") )
@@ -107,6 +119,25 @@ def miningbs4(Query):
         return sorted(lt)
     else:
         return "no result found"
+
+def get_lt(Query):
+        py_url = "https://shopping.google.com/search?q="+str(Query)
+        py_con = requests.get(py_url)
+        
+        py_soup = BeautifulSoup (py_con.text, 'html.parser')
+        lt=[]
+        for cell in py_soup.find_all('td' , attrs={'class':'KEJLN'}):
+        
+            txt = cell.find('h2' , attrs={'class': 'MPhl6c'})
+            price = cell.find('span', attrs={'class': 'aZK3gc Lhpu7d'})
+            link = cell.find('a', attrs={'class':'loT5Qd kneS6c'})
+            # print(price.text)
+            if txt and price and price.text and link['href']:
+                lt.append((locale.atof(price.text[1:]),txt["title"],link['href']))
+        if lt:
+            return sorted(lt)
+        else:
+            return "no result found"
 
 
 
