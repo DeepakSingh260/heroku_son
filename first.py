@@ -55,7 +55,8 @@ def func():
         headers = {'Content-type': 'application/json' }
         data = {"chatID" : chat_id,
                 "body" : "text"}  
-        answer = requests.post(base_url, data=json.dumps(data), headers=headers)
+        answer = requests.post(url, data=json.dumps(data), headers=headers)
+        print("answer" , answer.json())
         return answer.json()
     else:
         print("hub token",request.args.get("hub.verify_token") , "mode" , request.args.get("hub.mode") )
