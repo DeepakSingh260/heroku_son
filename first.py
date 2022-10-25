@@ -5,6 +5,7 @@ try:
     from selenium import webdriver 
 except:
     print("no module name selenoum")
+
 import time
 import locale
 import os
@@ -51,13 +52,20 @@ def func():
            
         base_url = 'https://graph.facebook.com/v14.0/101564042742370/messages'
         method = "sendMessage"
-        url = f"{base_url}{method}?token={secret_token}"
-        headers = {'Content-type': 'application/json' }
-        data = {"chatID" : chat_id,
-                "body" : "text"}  
-        answer = requests.post(url, data=json.dumps(data), headers=headers)
-        print("answer" , answer.json())
-        return answer.json()
+        headers = {'Content-type': 'application/json','Authorization': 'Bearer EAALE1CNsKmUBAJOD4HgoU1dipBRAm9xx14tcZBOxuwhgbT7i610cZCRZBt7497rTYQSJw2gYu4KOrZC3qHWpYT7W5pqYiUqskojTrmBwceLjP2gI6H1P0LfDUYWHRfpGV6qKipniZARhj0lF7Dkq1tgQnkCEgXdtvr2fVb1Cm9ZC8MmZATstIlbbe32WfsDCMpxzlShrYEwIgZDZD'  }
+        data = {
+            "messaging_product": "whatsapp",
+            "to": "919682342287",
+            "type": "text",
+            "text": {
+                "preview_url": False,
+                "body": "text-message-content"
+            }      
+            }
+        
+        answer = requests.post(base_url, data=json.dumps(data), headers=headers)
+        print(answer.json())
+        return  app.make_response(("res", 200))
     else:
         print("hub token",request.args.get("hub.verify_token") , "mode" , request.args.get("hub.mode") )
         sent_token = str(request.args.get("hub.verify_token")).split(" ")[0]
