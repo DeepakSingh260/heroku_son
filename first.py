@@ -67,7 +67,7 @@ def func():
             ans+=st
         data = {
             "messaging_product": "whatsapp",
-            "to": "919682342287",
+            "to": "",
             "type": "text",
             "text": {
                 "preview_url": False,
@@ -75,7 +75,7 @@ def func():
             }      
             }
 
-        bot_no = "15550476952"
+        bot_no = ""
         if bot_no!=phone:
             
             answer = requests.post(base_url, data=json.dumps(data), headers=headers)
